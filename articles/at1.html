@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+    <title>Javaで配色支援GUIアプリを作成しました</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="l-head">
+            <a href="../index.html">MEIO STDIO</a>
+        </div>
+        <div class="r-head">ソフトからハードまでITの知識交流サークル</div>
+        <div class="version">ver. β</div>
+    </div>
+
+    <div class="article">
+
+        <div class="article-title">
+            Javaで配色支援GUIアプリを作成しました
+        </div>
+
+        <div class="dummy"></div>
+
+        <div class="article-text">
+
+            <h1>githubアプリを作った</h1>
+
+            　授業の自由課題でGUIアプリを作成しました。
+            <div class="sp"></div>
+            　デザインする際、でたらめに使いたい色を使ってはいけません。
+            <div class="sp"></div>
+            　配色には理論があります。その理論に当てはめてデザイナーはデザインを決定しています。
+            <div class="sp"></div>
+            　理論も複数あって、どんな印象を与えるかが変わるのでデザイナーはよく配色支援ツールを使います。
+            <div class="sp"></div>
+            　今回はユーザーが使いたい色にあう配色をオススメするアプリを作成しました。
+            <div class="sp"></div>
+            <a href="http://colormind.io/">http://colormind.io/</a><br>
+            ↑目指したのはこんな感じの機能
+
+            <h1>アプリの概要</h1>
+
+            ユーザーは12色ある色から自分が使いたい色を決定するか、カラーコード(16進数、RGBｄ)で色を決定します。
+            <div class="sp"></div>
+            決定後、画像右にある相性のいい色の部分に理論に沿った色を出してくれます。
+            <div class="sp"></div>
+            今回のアプリではトライアド配色、スプリッド・コメンタリー配色、アナロガス配色という配色パターンで色を表示しています。
+
+            <div class="image">
+                <img src="../image/color.png">
+            </div>
+
+            <h1>トライアド配色</h1>
+
+            色相環を指定した色を頂点として3等分<br>
+            色相環上を正三角形にとるのでバランスのとれた安定感のある配色となります。
+            <div class="sp"></div>
+            画像では例えば黄色を選ぶと三角形の頂点の三つが相性の良い色になります。
+            <div class="sp"></div>
+            参考文献<br>
+            <a href="https://onl.bz/mLiKkc4">https://onl.bz/mLiKkc4</a>
+
+            <div class="image">
+                <img src="../image/color1.png">
+            </div>
+
+            <div class="spacer"></div>
+
+            <h1>スプリッド・コメンタリー配色</h1>
+
+            指定した色の補色（反対の位置にある色）の類似色（隣り合っている色）の組み合わせ。<br>
+            画像では黄色の補色である紫の隣り合っている色が相性の良い色です。<br>
+            補色配色（色相にコントラストがある）の性質と
+            類似配色（色相に類似性がある）の２つの面を持っています。<br>
+            <div class="sp"></div>
+            参考文献<br>
+            <a href="https://onl.bz/if8TdD9">https://onl.bz/if8TdD9</a>
+
+            <div class="image">
+                <img src="../image/color2.png">
+            </div>
+
+            <div class="spacer"></div>
+
+            <h1>アナロガス配色</h1>
+
+            指定した色の類似色の組み合わせ。
+            <div class="sp"></div>
+            スプリッド・コメンタリー配色は補色の類似色ですが、アナロガス配色は単純に指定した色の類似色です。
+            <div class="sp"></div>
+            グラデーションが作りやすく、調和をとりやすくなります。統一感が感じられるので、選んだ色のイメージが伝わりやすくなります。
+            <div class="sp"></div>
+            参考文献<br>
+            <a href="https://onl.bz/PvdXmYV">https://onl.bz/PvdXmYV</a>
+
+            <div class="image">
+                <img src="../image/color3.png">
+            </div>
+
+            <h1>UIに色を指定する方法</h1>
+
+            色の指定方法を説明します。すでに知っている人は飛ばしてください。<br>
+
+            今回私がGUIアプリで使ったのはJavaのColorクラスです。
+
+            javaSE8, https://sun.ac.jp/prof/yamagu/java8docs/api/java/awt/Color.html
+
+            LabelやButton、Textに色を設定する際に使います。
+
+            label.setForegroud(Color.Red);
+
+            REDやBLUEなどで指定可能ですが、もっと細かい色を設定したいときには↓のように書きます。
+
+            label.setBackground(new Color(10, 30, 50));
+
+            ColorオブジェクトをRGBで指定して生成、その後setBackgroundしています。
+
+
+            label.setBackground(Color.decode("#FFFFFF"));
+
+            このように16進数でも指定できます。
+
+            トライアド配色の導き方
+
+            ここからは実際にコードを見ながら配色の導き方を説明していきます。
+
+            <pre>
+                public void triad() {
+                    int R, G, B;
+                    int x;
+                    R = choiceColor.getBackground().getRed();
+                    G = choiceColor.getBackground().getGreen();
+                    B = choiceColor.getBackground().getBlue();
+                    x = R;
+                    R = G;
+                    G = B;
+                    B = x;
+                    triadColor1.setBackground(new Color(R, G, B));
+                    x = R;
+                    R = G;
+                    G = B;
+                    B = x;
+                    triadColor2.setBackground(new Color(R, G, B));
+                }
+            </pre>
+
+            これはトライアド配色の導き方です。
+
+            復習ですが、トライアド配色は指定した色のを基準に色相環を3等分して、それぞれの頂点に位置する色の組み合わせになります。
+
+            色をRGBで表したときにそれぞれの色を入れ替えることでそれぞれの頂点の色が指定できます。
+
+            <div class="image">
+                <img src="../image/color4.png">
+            </div>
+
+            図の例ではオレンジ色(#FF4500)を指定してトライアド配色を出しました。<br>
+
+            RGBの値を見てみるとそれぞれの値が入れ替わっているだけだということが分かります。<br>
+
+            <h1>スプリッド・コメンタリー配色とアナロガス配色の導き方</h1>
+
+            スプリッド・コメンタリー配色とアナロガス配色は導き方がほぼ同じです。
+            <div class="sp"></div>
+            復習します。
+
+            <div class="sp"></div>
+            スプリッド・コメンタリー配色：<br>
+            指定色の補色の類似色の組み合わせ
+            <div class="sp"></div>
+            アナロガス配色：<br>
+            指定色の類似色の組み合わせ
+            <div class="sp"></div>
+            つまり類似色を出すことは共通しており、それが補色のものか、指定色のものかの違いしかありません。
+
+            メソッドを比較してもほとんど変わりません。<br>
+
+            ↓上からアナロガス配色、スプリッド・コメンタリー配色のメソッド
+
+            <pre>
+                public void analogous() {
+                    int change = 60; // 変化量
+                    int red = choiceColor.getBackground().getRed();
+                    int green = choiceColor.getBackground().getGreen();
+                    int blue = choiceColor.getBackground().getBlue();
+                    float[] targetHSB = Color.RGBtoHSB(red, green, blue, null);
+                    int hueInt = (int) (targetHSB[0] * 360);// Int型の色相値
+            
+                    int changedHue1 = hueInt + change;
+                    int changedHue2 = hueInt - change;
+            
+                    analogousColor1
+                            .setBackground(new Color(Color.HSBtoRGB((float) (changedHue1) / 360, targetHSB[1], targetHSB[2])));
+                    analogousColor2
+                            .setBackground(new Color(Color.HSBtoRGB((float) (changedHue2) / 360, targetHSB[1], targetHSB[2])));
+                }
+            </pre>
+
+            <pre>
+                public void splitCommentary() {
+                    int change = 30; // 変化量
+                    int red = choiceColor.getBackground().getRed();
+                    int green = choiceColor.getBackground().getGreen();
+                    int blue = choiceColor.getBackground().getBlue();
+                    float[] targetHSB = Color.RGBtoHSB(red, green, blue, null);
+                    int hueInt = (int) (targetHSB[0] * 360);// Int型の色相値
+            
+                    int changedHue1 = hueInt + change + 180;
+                    int changedHue2 = hueInt - change + 180;
+            
+                    splitCommentaryColor1
+                            .setBackground(new Color(Color.HSBtoRGB((float) (changedHue1) / 360, targetHSB[1], targetHSB[2])));
+                    splitCommentaryColor2
+                            .setBackground(new Color(Color.HSBtoRGB((float) (changedHue2) / 360, targetHSB[1], targetHSB[2])));
+            
+                }
+            </pre>
+
+            この2つのメソッドで違う部分はこの部分です。
+            <div class="sp"></div>
+            int changedHue1 = hueInt + change + 180;
+            <div class="sp"></div>
+            int changedHue2 = hueInt - change + 180;
+            <div class="sp"></div>
+            +180することで補色になるため、スプリッド・コメンタリー配色では+180しています。<br>
+
+            HSBでColorを指定する<br>
+
+            上記のメソッドではアナロガス配色では見られなかったColorクラスのメソッドがあります。<br>
+
+            RGBtoHSB();<br>
+
+            HSBtoRGB();<br>
+
+            見たままの通りですがRGB値をHSB値に変換したり、またはその逆をしています。<br>
+
+            なぜわざわざHSBに変換しているかというと、類似色や補色が簡単に出せるからです。<br>
+
+            +180をするだけで補色を出すのはRGBにはできません。<br>
+
+            HSBはH(Hue)色相、S(Saturation)彩度、B(Brightness)明度
+
+            で色を表しています。<br>
+
+            つまりH(Hue)の値を変えるだけで補色や類似色が出せるのです。<br>
+            <div class="sp"></div>
+
+            1．指定した色のRGB値を取得<br>
+
+            2．RGB値をHSB値に変換<br>
+
+            3．変換した値のH(Hue)を改変<br>
+
+            アナロガス配色なら+60(類似色の分)だけ、
+
+            スプリッド・コメンタリー配色なら+180(補色にするため)も追加<br>
+
+            4．RGB値でしかsetBackgourndできないためRGB値に変換して設定
+
+            <div class="image">
+                <img src="../image/color5.png">
+            </div>
+
+            図のようなイメージで考えればいいです。<br>
+
+            指定色(オレンジ色)を起点に360度ある色相環に+60、-60すれば類似色が出ます。<br>
+
+            360度の半分である+180をすれば補色(図で言うと水色の部分)が指定されます。<br>
+
+            RGBtoHSBメソッドやHSBtoRGBメソッドの使い方はここでは紹介しません。<br>
+
+            私はJavaSE8の公式ドキュメントを見て使い方を調べたので参考までに、<br>
+
+            javaSE8, https://sun.ac.jp/prof/yamagu/java8docs/api/java/awt/Color.html
+
+            <h1>余談</h1>
+
+            無彩色
+            <div class="spacer"></div>
+
+            トライアド配色はRGBのそれぞれの値を入れ替えて色を指定していました。<br>
+
+            ではそれぞれの値が全く同じものではどのような配色になるのでしょうか。<br>
+
+            例えば#646464ではどうでしょう。<br>
+
+            #646464のRGB値はR:100 G:100 B:100です。これでは値を入れ替えても色は変化しません。<br>
+
+            実際にアプリで指定してみます。<br>
+
+            <div class="image">
+                <img src="../image/color6.jpg">
+            </div>
+
+            やはり変化していませんね。これは「無彩色」と呼ばれるそうです。<br>
+
+            白、灰、黒の系統に属する色みのない色のこと。赤、緑、青などのような色みのある有彩色と区別される。無彩色は、色の3属性である色相、明度、彩度のうち、明度だけをもつ色である。<br>
+
+            コトバンクからの引用です。<br>
+
+            つまり変化させる色彩がないためどの配色パターンでも同じような色が出てしまうのです。<br>
+
+            始め、無彩色の存在を知らずに計算式が間違っているのではないかと心配になりましたがデザインに詳しい友人から教えてもらい安心しました。<br>
+
+            RGBで補色や類似色を出そうとした<br>
+            最終的にはHSBに変換して配色を導き出していましたが、初めはRGBだけで完結させようとしていました。<br>
+
+            以下のサイトではこのように補色を計算しています。<br>
+            <div class="sp"></div>
+            補色の計算式
+            <div class="sp"></div>
+            補色の計算式はRGB値の最大値と最小値を加算して、その値で各RGB値を引いた値となります。<br>
+            <div class="sp"></div>
+            例えば、RGB(255,72,172)という色の場合は、最大値の「255」と最小値の「72」を加算した「327」を使用して各RGBを減算します。
+            <div class="sp"></div>
+            R = 327- 255
+            <div class="sp"></div>
+            G = 327- 72
+            <div class="sp"></div>
+            B = 327- 172
+            <div class="sp"></div>
+            RGB(72,255,155)が補色となります。<br>
+            <div class="sp"></div>
+            参考サイト：プチモンテ,色相環と12色相環[作成と計算式]<br>
+            <div class="sp"></div>
+            <a href="https://www.petitmonte.com/javascript/color_wheel.html#:~:text=%E8%A3%9C%E8%89%B2%E3%81%AE%E8%A8%88%E7%AE%97%E5%BC%8F%E3%81%AF,RGB%E3%82%92%E6%B8%9B%E7%AE%97%E3%81%97%E3%81%BE%E3%81%99%E3%80%82&text=RGB(72%2C255%2C155)%E3%81%8C%E8%A3%9C%E8%89%B2%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82">https://www.petitmonte.com/javascript/color_wheel.html#:~:text=%E8%A3%9C%E8%89%B2%E3%81%AE%E8%A8%88%E7%AE%97%E5%BC%8F%E3%81%AF,RGB%E3%82%92%E6%B8%9B%E7%AE%97%E3%81%97%E3%81%BE%E3%81%99%E3%80%82&text=RGB(72%2C255%2C155)%E3%81%8C%E8%A3%9C%E8%89%B2%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82</a>
+            
+            <div class="spacer"></div>
+            この計算を実現するために最大値と最小値を出すメソッドを準備したりしなければならず、私の頭では難しかったためいろいろ調べてHSBに行きつきました。<br>
+
+            RGBだけで計算するコードから大体100行くらい短縮できたので大満足です。<br>
+
+            欲を言えばJLabelやJbuttonのカラーの設定がそのままHSBでできれば嬉しかったのですが、、、<br>
+
+            ColorクラスのオブジェクトをHSBで設定する方法を知っている方が居たら教えていただきたいです！<br>
+            <div class="spacer"></div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

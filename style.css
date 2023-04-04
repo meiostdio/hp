@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.version {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 45px;
+    height: auto;
+    background-color: rgb(0, 0, 0, 0.2);
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(image/bg.jpg);
+    background-size: cover;
+    background-color: rgb(0, 0, 0);
+}
+
+.l-head {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 47.5vh;
+    left: 0;
+    font-size: 3vw;
+    transform: rotate(90deg);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+}
+
+.l-head a {
+    text-decoration: none;
+}
+
+.r-head {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 35vh;
+    right: 10%;
+    font-size: 3vw;
+    transform: rotate(-90deg);
+    transform-origin: 100% 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+}
+
+.contentbox {
+    width: 60vw;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 20%;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.contentbox::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    height: fit-content;
+    width: 55vw;
+    padding: 2.5vw;
+    margin-bottom: 8%;
+    background-color: rgb(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.image {
+    height: 55vw;
+    width: 55vw;
+    margin-bottom: 2.5vw;
+}
+
+img {
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0, 0.2);
+}
+
+.text {
+    height: fit-content;
+    width: 55vw;
+    margin: auto;
+    background-color: rgb(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.title {
+    height: fit-content;
+    width: 50vw;
+    padding: 2.5vw;
+    font-size: clamp(0.75rem, 0.607rem + 0.76vw, 1.563rem);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.profile {
+    height: fit-content;
+    width: 50vw;
+    padding: 2.5vw;
+    font-size: clamp(0.625rem, 0.515rem + 0.59vw, 1.25rem);
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 550px) {
+    .content {
+        height: fit-content;
+        width: 55vw;
+        background-color: rgb(0, 0, 0, 0.25);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        display:flex;
+    }
+
+    .image {
+        height: 20vw;
+        width: 20vw;
+        margin-bottom: 0;
+    }
+    
+    img {
+        border-radius: 5px;
+        background-color: rgb(0, 0, 0, 0.2);
+    }
+    
+    .text {
+        width: fit-content;
+        height: fit-content;
+        margin-top: 0;
+        margin-left: 2.5vw;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+    }
+    
+    .title {
+        width: 27.25vw;
+        height: fit-content;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+    
+    .profile {
+        width: 27.5vw;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+    }
+
+    .r-head {
+        top: 20vh;
+    }
+}
+
+@media screen and (min-width: 800px){
+    .r-head {
+        top: 10vh
+    }
+}
+
+@media screen and (min-width: 800px){
+    .r-head {
+        top: 100px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .r-head {
+        top: 40px;
+        font-size: 30px;
+    }
+}

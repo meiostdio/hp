@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+    <title>ジェスチャーでパソコン操作</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="l-head">
+            <a href="../index.html">MEIO STDIO</a>
+        </div>
+        <div class="r-head">ソフトからハードまでITの知識交流サークル</div>
+        <div class="version">ver. β</div>
+    </div>
+
+    <div class="article">
+
+        <div class="article-title">
+            ジェスチャーでパソコン操作
+        </div>
+
+        <div class="dummy"></div>
+
+        <div class="article-text">
+
+            <div class="image">
+                <img src="../image/mp.jpg">
+            </div>
+
+            <div class="spacer"></div>
+
+            Pythonに慣れるための練習にもなりそう。<br>
+            結構簡単にすごい機能のプログラムが作れちゃいます。
+
+            <div class="spacer"></div>
+
+            <h1>プログラムの概要</h1>
+
+            親指と人差しで空中をつまみ、移動して指を離す動作でなんらかの処理を実行させるというプログラムです。<br>
+            今回のプログラムではPyAutoGUIのキーボード操作で、四方に動く指に合わせて４パターンのWindowsのショートカットキーが処理されます。
+
+            <div class="spacer"></div>
+
+            <h1>環境</h1>
+
+            AnacondaのJupyter Notebookを開発環境としましたが、その必要がどこまであるのかよくわかってません。強いていうならJupyter
+            Notebookはインタプリタ型の対話形式なので、逐一コードを確認することができます。とりあえずPythonを実行できるとよいですが、注意点として、Google
+            ColaboratoryとMediaPipeの組み合わせは少なくとも筆者は確認していません(できたらいいな)。<br>
+            とりあえずAnacondaをインストールし、以下のコードをAnaconda Powershell Prompt に入力します。
+
+            <div class="spacer"></div>
+
+            conda create -n mediapipe<br>
+            conda activate mediapipe<br>
+            pip install mediapipe
+
+            <div class="spacer"></div>
+
+            インストールができれば、どこかにJupyter Notebookがあり、そこから実際にプログラムを書くためのファイルを作ります。<br>
+            ファイル名は適当で問題ありません。
+
+            <div class="spacer"></div>
+
+            <h1>コードの説明</h1>
+
+            MediaPipeのインストールができれば、さっそくJupyter Notebookでコーディングします。あとでソースコードを貼りますが、すべて一行のセルに入力して大丈夫です。
+
+            <div class="spacer"></div>
+
+            ライブラリをインポート
+
+            <div class="spacer"></div>
+
+            import pyautogui<br>
+            import cv2<br>
+            import mediapipe as mp<br>
+            import math<br>
+            import numpy as np
+
+            <div class="spacer"></div>
+
+            ライブラリをインポートするとあらかじめ用意された便利なプログラムを呼び出すことができます。
+
+            <div class="spacer"></div>
+
+            角度を求めるための関数の定義
+
+            <div class="spacer"></div>
+            <pre>def degree(x0, y0, x1, y1, x2, y2):
+                vec1=[x1-x0, y1-y0]
+                vec2=[x2-x0, y2-y0]
+                abserve1=np.linalg.norm(vec1)
+                abserve2=np.linalg.norm(vec2)
+                inner=np.inner(vec1,vec2)
+                cos_theta=inner/(abserve1*abserve2)
+                theta=math.degrees(math.acos(cos_theta))
+                deg = round(theta,2)
+                return deg
+            </pre>
+
+
+            <div class="spacer"></div>
+
+            degreeが関数名になります。()内に6つの変数を入れると、それらがx0からy2に対応して角度(0-180°)が計算されます。ここで入力される変数は手のランドマーク、つまり手の関節に与えられた点の座標になります。<br>
+            defから下の行はインデントが必要なので要注意です。
+
+            <div class="spacer"></div>
+
+            <h1>リアルタイムで手を認識</h1>
+
+            <a href="https://google.github.io/mediapipe/solutions/hands.html">MediaPipe</a>の公式サイトからコードを引っ張ってきます<br>
+            （割愛）
+
+            <div class="spacer"></div>
+
+            コードの大意としては、ウェブカメラから映像が入力される間、そこで取得した画像を一コマずつOpenCVで加工し、それをMediaPipeに読み込ませ、グラフを描画し出力するというものになっています。なおEscキーを押すとプログラムは停止します。
+
+            <h1>イベントハンドラ</h1>
+
+            ここからようやくオリジナルのコードになります。<br>
+            条件は親指と人差し指で空中をつまむ動作です。本来の方法は特定の手の形状を機械学習的なもので識別させるのかもしれませんが、そんな高度なことはできないので、親指先ー手首ー人差し指先の座標を取得し、この3点が作る角度の開閉をイベントの最初の条件にします。<br>
+            そこからは早い話、以下のような流れになります。
+
+            <div class="image">
+                <img src="../image/mp2.jpg">
+            </div>
+
+            <div class="spacer"></div>
+
+            (tmpx, tmpy)は座標の変数です。角度から移動させた方向がわかり、それに応じて処理が発生します。<br>
+            ちなみにこの座標ではx,yは0-1で表現されます。
+
+            <div class="spacer"></div>
+
+            <pre>
+            indX=hand_landmarks.landmark[8].x
+            indY=hand_landmarks.landmark[8].y
+
+            wriX=hand_landmarks.landmark[0].x
+            wriY=hand_landmarks.landmark[0].y
+        
+            thuX=hand_landmarks.landmark[4].x
+            thuY=hand_landmarks.landmark[4].y
+            </pre>
+
+            <div class="spacer"></div>
+
+            繰り返し処理(for)のなかで3点の座標、ind(人差し指)、wri(手首)、thu(親指)を取得します。
+
+            <div class="spacer"></div>
+
+            finger = 0<br>
+            tmp1x, tmp1y, tmp2x, tmp2y = 0, 0, 0, 0
+
+            <div class="spacer"></div>
+
+            繰り返し処理の外でフラグを宣言・初期化します。
+
+            <div class="spacer"></div>
+
+            <pre>
+                degree1 = degree(wriX, wriY, thuX, thuY, indX, indY)        
+
+                if finger == 0 or finger == 3 and degree1 > 25:   
+                    print('ready')     
+                    finger = 1
+              
+                if finger == 1 and degree1 < 5: 
+                    print('catch') 
+                    tmp1x = (indX + thuX)/2
+                    tmp1y = (indY + thuY)/2
+                    finger = 2
+                
+                if finger == 2 and degree1 > 10:
+                    print('release')
+                    tmp2x = (indX + thuX)/2
+                    tmp2y = (indY + thuY)/2
+                    degree2 = degree(tmp1x, tmp1y, 0, tmp1y, tmp2x, tmp2y)    
+        
+                    if degree2 < 60:
+                        pyautogui.hotkey('ctrl', 'y')
+                        print('右')
+        
+                    if degree2 > 60 and degree2 < 120:
+
+                        if tmp1y > tmp2y:
+                            pyautogui.hotkey('ctrl', 'c')
+                            print('上')
+        
+                        if tmp2y > tmp1y:       
+                            pyautogui.hotkey('ctrl', 'v')       
+                            print('下')
+                
+                        if degree2 > 120:
+                            pyautogui.hotkey('ctrl', 'z')
+                            print('左')
+
+                    finger = 3
+            </pre>
+
+            <div class="spacer"></div>
+
+            これはfor文内部で座標を取得したあとに書かれます。先に宣言したfingerは指の動作の行程を順序よく認識させるために用いられます。また、tmpみたいな変数はキャッチとリリース時に取得した座標を一時的に保管するためのものです。<br>
+            最初に定義した関数の計算の都合上、算出される角度は0から180までになっています。そのため、右方向は1-60°、上下方向は61-120°、左方向は121-180°という割り当てになり、角度だけでは上下は判別できません。苦し紛れの方策として、上下方向は角度に加えて、キャッチ時よりy座標が大きくなっているかどうかで上下の判別をします。<br>
+            最後におまけ程度のpyauto.hotkey()を使います。引数にショートカットキーとして打ち込むキーを入力すればOKです。
+
+            <div class="spacer"></div>
+
+            <a href="https://sites.google.com/mail.meio-u.ac.jp/meio-stdio/20230124_kota">ソースコード記載ページ</a>
+
+            <div class="spacer"></div>
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

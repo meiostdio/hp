@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -9,128 +9,109 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
-    <title>オンラインしりとり</title>
+
+
+
+    <title>オンラインしりとり【Google App Script 入門】</title>
+
+
+
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="l-head">
-            <a href="../index.html">MEIO STDIO</a>
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
+            </div>
+
+
+            <div class="article">
+                <h1>オンラインしりとり【Google App Script 入門】</h1>
+
+                <p>
+                    <iframe
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTramfQIOnU6Rk4z6s-lFSPtWnnYQ7zY24Y7r36ctvDpN5Ro8OrF8PNErqMDjuafMJDoHWiYXzlSmkI/pubhtml?widget=true&amp;headers=false"></iframe>
+                </p>
+
+                <p>
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdMpR1rAJia0I2x1_Bdg7qA9AtekLALVl2twyhkA1X9mXbtdw/viewform?embedded=true"
+                        frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+                </p>
+
+                <h2>Google Apps Scriptとは</h2>
+
+                <p>
+                    Google Apps Script(GAS)ではGmailやGoogle
+                    Sheets(スプレッドシート)などで使用することのできるGoogleのスクリプト言語で、基本的な書き方はJavaScriptと同じです。特定の人物から届いたメールの内容をスプレッドシートにまとめるなど、Googleのサービスを連携させるプログラムを書くことができます。
+
+                    今回はGoogle Formsとスプレッドシートを連携させてオンラインしりとりを作ってみました。
+                </p>
+
+                <h2>ソースコード</h2>
+
+                <pre class="prettyprint"><code>
+    function myFunction() {
+
+        //シートを取得
+        const sheet = SpreadsheetApp.getActiveSheet();
+      
+        //シートの最後の行(lastRow)と最後の列(lastColumn)を取得
+        const lastRow = sheet.getLastRow();
+        const lastColumn = sheet.getLastColumn();
+      
+        //既存の言葉(LastWord)は最後から二番目の行(lastRow - 1)と最後の列(lastColumn)
+        const LastWord = sheet.getRange(lastRow - 1, lastColumn).getValue();
+      
+        //送信した言葉(NextWord)は最後の行(lastRow)と最後の列(lastColumn)
+        const NextWord = sheet.getRange(lastRow, lastColumn).getValue();
+      
+        //送信した言葉の文字数を取得
+        const length = NextWord.length;
+      
+        //送信した言葉がひらがなならTrue
+        const hiragana = /^[ぁ-んー]+$/.test(NextWord)
+      
+        //既存の言葉の尻と送信した言葉の頭
+        const hip = LastWord.charAt(2);
+        const head = NextWord.charAt(0);
+      
+        console.log(length);
+        console.log(hiragana);
+        console.log(hip + "," + head);
+
+        //文字数、ひらがな、しりとりになるか
+        if (length != 3 || hiragana != true || hip != head) {
+          sheet.deleteRow(lastRow);
+        }      
+      }
+</code></pre>
+
+                かなり簡単に作れます。<br>
+                コードを書いたら、ウェブアプリとしてデプロイし(デプロイのボタンが右上にあります)、ここで作った関数をトリガーに設定すれば完成です。
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+            </div>
+
         </div>
-        <div class="r-head">ソフトからハードまでITの知識交流サークル</div>
-        <div class="version">ver. β</div>
+
     </div>
 
-    <div class="article">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
 
-        <div class="article-title">
-            オンラインしりとり
-        </div>
-
-        <div class="dummy"></div>
-
-        <div class="article-text">
-
-            <iframe
-                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTramfQIOnU6Rk4z6s-lFSPtWnnYQ7zY24Y7r36ctvDpN5Ro8OrF8PNErqMDjuafMJDoHWiYXzlSmkI/pubhtml?widget=true&amp;headers=false"></iframe>
-
-            <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdMpR1rAJia0I2x1_Bdg7qA9AtekLALVl2twyhkA1X9mXbtdw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
-
-            <div class="spacer"></div>
-
-            <h1>Google Apps Scriptとは</h1>
-
-            Google Apps Script(GAS)はGmailやGoogle
-            Sheets(スプレッドシート)などで使用することのできるGoogleのスクリプト言語で、基本的な書き方はJavaScriptと同じです。特定の人物から届いたメールの内容をスプレッドシートにまとめるなど、Googleのサービスを連携させるプログラムを書くことができます。
-            <div class="sp"></div>
-            今回はGoogle Formsとスプレッドシートを連携させてオンラインしりとりを作ってみました。
-
-            <div class="spacer"></div>
-
-            <h1>ソースコード</h1>
-
-            <pre>
-                function myFunction() {
-
-                    //シートを取得
-                  
-                    const sheet = SpreadsheetApp.getActiveSheet();
-                  
-                    //シートの最後の行(lastRow)と最後の列(lastColumn)を取得
-                  
-                    const lastRow = sheet.getLastRow();
-                  
-                    const lastColumn = sheet.getLastColumn();
-                  
-                    //既存の言葉(LastWord)は最後から二番目の行(lastRow - 1)と最後の列(lastColumn)
-                  
-                    const LastWord = sheet.getRange(lastRow - 1, lastColumn).getValue();
-                  
-                    //送信した言葉(NextWord)は最後の行(lastRow)と最後の列(lastColumn)
-                  
-                    const NextWord = sheet.getRange(lastRow, lastColumn).getValue();
-                  
-                    //送信した言葉の文字数を取得
-                  
-                    const length = NextWord.length;
-                  
-                    //送信した言葉がひらがなならTrue
-                  
-                    const hiragana = /^[ぁ-んー]+$/.test(NextWord)
-                  
-                    //既存の言葉の尻と送信した言葉の頭
-                  
-                    const hip = LastWord.charAt(2);
-                  
-                    const head = NextWord.charAt(0);
-                  
-                    
-                  
-                    console.log(length);
-                  
-                    console.log(hiragana);
-                  
-                    console.log(hip + "," + head);
-                  
-                  
-                    //文字数、ひらがな、しりとりになるか
-                  
-                    if (length != 3 || hiragana != true || hip != head) {
-                  
-                      sheet.deleteRow(lastRow);
-                  
-                    }
-                  
-                  }
-            </pre>
-
-            かなり簡単に作れます。<br>
-            コードを書いたら、ウェブアプリとしてデプロイし(デプロイのボタンが右上にあります)、ここで作った関数をトリガーに設定すれば完成です。
-
-            <div class="spacer"></div>
-
-        </div>
-
-
-
-    </div>
+    <style>
+        iframe {
+            width: 90%;
+            height: fit-content;
+            max-height: 60%;
+        }
+    </style>
 
 </body>
 
 </html>
-
-<style type="text/css">
-    iframe {
-        width: 50vw;
-        height: 60vw;
-        margin: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        border-radius: 5px;
-    }
-
-    iframe::-webkit-scrollbar {
-        display: none;
-    }
-</style>

@@ -1,227 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
-    <title>ChatGPTとプログラミングする</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+
+
+
+  <title>ChatGPTとプログラミングする</title>
+
+
+
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="l-head">
-            <a href="../index.html">MEIO STDIO</a>
-        </div>
-        <div class="r-head">ソフトからハードまでITの知識交流サークル</div>
-        <div class="version">ver. β</div>
-    </div>
-
-    <div class="article">
-
-        <div class="article-title">
-            ChatGPTとプログラミングする
-        </div>
-
+  <div class="wrapper">
+    <div class="wh">
+      <div class="head">
+        <a href="../index.html">
+          <div class="rabel">MEIO STDIO</div>
+        </a>
         <div class="dummy"></div>
+      </div>
 
-        <div class="article-text">
-            最近はChatGPTとプログラミングすることがトレンドになっているみたいですね。<br>
 
-            私は最近までChatGPTを使っていなかったのですが、今まで使わなかったことを後悔するほど便利だったので共有します。<br>
+      <div class="article">
+        <h1>ChatGPTとプログラミングする</h1>
+        <p>
+          最近はChatGPTとプログラミングすることがトレンドになっているみたいですね。
 
-            質問した文（太字）と回答は原文ママです。<br>
+          私は最近までChatGPTを使っていなかったのですが、今まで使わなかったことを後悔するほど便利だったので共有します。
 
-            なお今回の記事はChatGPTのすごさを実感するための記事なので回答は全部読む必要はないです。<br>
+          質問した文（太字）と回答は原文ママです。
 
-            <h1>CSSを書かせてみた</h1>
+          なお今回の記事はChatGPTのすごさを実感するための記事なので回答は全部読む必要はないです。
+        </p>
 
-            CSSとは・・・<br>
+        <h3>CSSを書かせてみた</h3>
 
-            HTMLで表示するWebページの見た目（ボタンの色や文字の大きさ、間隔など）を定義するファイルのこと
+        <p>
+          CSSとは・・・<br>
 
-            <div class="image">
-                <img src="../image/ai2.png">
-            </div>
+          HTMLで表示するWebページの見た目（ボタンの色や文字の大きさ、間隔など）を定義するファイルのこと
 
-            PC教室の使用状況を表示するページを作成していて、テーブルに各時間の状況を格納しています。<br>
+          <img src="../image/ai2.png">
 
-            上の画像が最初の状況でこのままでは少し見えにくいと感じたため、CSSを編集してもらいます。<br>
+          PC教室の使用状況を表示するページを作成していて、テーブルに各時間の状況を格納しています。
 
-            以下の文をChatGPTに投げました。<br>
+          上の画像が最初の状況でこのままでは少し見えにくいと感じたため、CSSを編集してもらいます。
 
-            <div class="sp"></div>
+          以下の文をChatGPTに投げました。
 
-            MatTableで9個の要素がありそれぞれの大きさを文字の大きさによって変更するのではなく、同じ大きさで固定するCSSはどのように実装すればよいですか。
+          MatTableで9個の要素がありそれぞれの大きさを文字の大きさによって変更するのではなく、同じ大きさで固定するCSSはどのように実装すればよいですか。
 
-            <div class="sp"></div>
+          回答が以下です。
 
-            回答は以下でです。
+          <dd></dd>
 
-            <pre>
-                cssCopy code
-            .mat-cell {
-            width: 100px; /* セルの幅を100pxに指定する */
-            white-space: nowrap; /* セル内のテキストを折り返さないようにする */
-            overflow: hidden; /* セル内のテキストを隠す */
-            text-overflow: ellipsis; /* セル内のテキストがはみ出した場合に省略符号を表示する */
+          MatTableで全てのセルのサイズを同じにするには、以下のようなCSSを使用することができます。
+
+        <pre class="prettyprint">
+cssCopy code
+
+.mat-cell {
+  width: 100px; /* セルの幅を100pxに指定する */
+  white-space: nowrap; /* セル内のテキストを折り返さないようにする */
+  overflow: hidden; /* セル内のテキストを隠す */
+  text-overflow: ellipsis; /* セル内のテキストがはみ出した場合に省略符号を表示する */
 }
-            </pre>
+                </pre>
 
-            この回答で出力されたコードをコピペしても動作します。すごい！<br>
+        このCSSを使用することで、全てのセルが同じ幅になり、セル内のテキストもはみ出した場合には省略符号で表示されます。ただし、この方法はセル内のテキストが長くなる場合には、全てのテキストが省略符号で表示されてしまうため、適切な幅を指定する必要があります。
 
-            コードの説明文も自動で挿入されています。<br>
+        <dd></dd>
 
-            ChatGPTを使ったことのない人が驚くポイントなのですが、単純に会話をするだけではなくコード文の生成も可能です。<br>
+        この回答で出力されたコードをコピペしても動作します。すごい！
 
-            <div class="image">
-                <img src="../image/ai3.png">
-            </div>
+        コードの説明文も自動で挿入されています。
 
-            さらに前の会話も記憶しているため、この回答に注文を付けることもできます。<br>
+        ChatGPTを使ったことのない人が驚くポイントなのですが、単純に会話をするだけではなくコード文の生成も可能です。
 
-            この回答ではセルの幅を100pxで指定して、セル内のテキストが長い時に省略するようにしています。<br>
+        <img src="../image/ai3.png">
 
-            画面の大きさによってセルの大きさも変化させたい＆テキストを折り返して全体を表示させたいため以下の文で質問しました。<br>
+        さらに前の会話も記憶しているため、この回答に注文を付けることもできます。
 
-            <div class="sp"></div>
+        この回答ではセルの幅を100pxで指定して、セル内のテキストが長い時に省略するようにしています。
 
-            ・幅をレスポンシブにして、画面の大きさによって最適化する<br>
+        画面の大きさによってセルの大きさも変化させたい＆テキストを折り返して全体を表示させたいため以下の文で質問しました。
 
-            ・長いテキストを省略符号ではなく折り返して表示する<br>
+        <dd></dd>
+        ・幅をレスポンシブにして、画面の大きさによって最適化する<br>
 
-            上記の点を反映してCSSを作り直してください。<br>
+        <dd></dd>
 
-            <div class="sp"></div>
+        ・長いテキストを省略符号ではなく折り返して表示する<br>
 
-            回答は以下のようになりました。
+        上記の点を反映してCSSを作り直してください。
+        <dd></dd>
 
-            <div class="sp"></div>
+        回答は以下のようになりました。
 
-            以下は、幅をレスポンシブにして、テキストを折り返すCSSの例です。
+        <dd></dd>
 
-            <div class="sp"></div>
+        以下は、幅をレスポンシブにして、テキストを折り返すCSSの例です。
 
-            <pre>
+        <pre class="prettyprint">
+cssCopy code
 
-            cssCopy code
-            table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
 
-            th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            }
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-            th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            }
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
 
-            @media (max-width: 768px) {
-            td {
-            white-space: normal;
-            word-wrap: break-word;
-                }
-            }
-        </pre>
+@media (max-width: 768px) {
 
-            **table-layout: fixedは、テーブルのセルの幅を均等にするために必要です。white-space: nowrapは、テキストを折り返さずに表示するために必要です。overflow:
-            hiddenは、テキストがセルからはみ出るのを防ぐために必要です。text-overflow: ellipsis**は、テキストがセルからはみ出た場合に省略符号で表示するために必要です。
+  td {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+                </pre>
+        **table-layout: fixedは、テーブルのセルの幅を均等にするために必要です。white-space: nowrapは、テキストを折り返さずに表示するために必要です。overflow:
+        hiddenは、テキストがセルからはみ出るのを防ぐために必要です。text-overflow: ellipsis**は、テキストがセルからはみ出た場合に省略符号で表示するために必要です。
 
-            <div class="sp"></div>
+        **@media (max-width: 768px)は、768px以下の画面サイズの場合に適用されるスタイルを定義しています。word-wrap:
+        break-wordは、テキストが折り返されるようにするために必要です。white-space: normal**は、テキストを折り返すために必要です。
 
-            **@media (max-width: 768px)は、768px以下の画面サイズの場合に適用されるスタイルを定義しています。word-wrap:
-            break-wordは、テキストが折り返されるようにするために必要です。white-space: normal**は、テキストを折り返すために必要です。
+        <dd></dd>
 
-            <div class="sp"></div>
+        この回答でもいまだにテキストを省略していたので再度省略しないように質問したところしっかりとしたCSSの設定を回答してくれました。
 
-            この回答でもいまだにテキストを省略していたので再度省略しないように質問したところしっかりとしたCSSの設定を回答してくれました。<br>
+        そして最終的なテーブルが以下のようになりました。
 
-            そして最終的なテーブルが以下のようになりました。
+        <img src="../image/ai4.png">
 
-            <div class="image">
-                <img src="../image/ai4.png">
-            </div>
+        ChatGPTを使い始めてからは<br>
 
-            ChatGPTを使い始めてからは<br>
+        ・ChatGPTに質問する。<br>
 
-            ・ChatGPTに質問する。<br>
+        ・ChatGPTからの回答で動くか試す<br>
 
-            ・ChatGPTからの回答で動くか試す<br>
+        ・動かない場合、回答の中にあるキーワードで個別に検索してみる<br>
 
-            ・動かない場合、回答の中にあるキーワードで個別に検索してみる<br>
+        のようにインターネットに落ちている情報を集めてもらうツールとして活用するようになりました。
 
-            のようにインターネットに落ちている情報を集めてもらうツールとして活用するようになりました。<br>
+        </p>
 
-            <div class="spacer"></div>
+        <h3>業務に使用することについての世間の反応</h3>
 
-            <h1>業務に使用することについての世間の反応</h1>
+        <p>
+          <a href="https://qiita.com/lazy-kz/items/e4932f1a90c2a7986ef5">GPT-4時代のエンジニアの生存戦略</a><br>
 
-            <div class="spacer"></div>
-            GPT-4時代のエンジニアの生存戦略<br>
-            <div class="spacer"></div>
+          このような記事がエンジニアのコラムでよく見るようになってきました。うまく活用していこうとする考えですね。
 
-            このような記事がエンジニアのコラムでよく見るようになってきました。うまく活用していこうとする考えですね。<br>
+          反対に、AI研究家にはそこまですごくないと感じている人もいるようです。<br>
 
-            反対に、AI研究家にはそこまですごくないと感じている人もいるようです。<br>
+          <a href="https://www.businessinsider.jp/post-263042">チャットできるAI、ChatGPTが｢そこまですごくない｣理由。見えてしまった限界</a><br>
 
-            <div class="spacer"></div>
-            チャットできるAI、ChatGPTが｢そこまですごくない｣理由。見えてしまった限界
-            <div class="spacer"></div>
+          しかし記事はエンジニア目線ではなく、AI研究者目線ではあります。
 
-            しかし記事はエンジニア目線ではなく、AI研究者目線ではあります。<br>
+          中にはエンジニア専門の質問サイトでChatGPTの回答をコピペする回答者も現れました。笑
 
-            中にはエンジニア専門の質問サイトでChatGPTの回答をコピペする回答者も現れました。笑<br>
+          私がした質問にChatGPTで生成した文で回答してきた人がおり、自分も見習うべきだと思いました。
+        </p>
 
-            私がした質問にChatGPTで生成した文で回答してきた人がおり、自分も見習うべきだと思いました。
+        <h3>ChatGPTを使ってみよう！</h3>
 
-            <h1>ChatGPTを使ってみよう！</h1>
+        電話番号とメールアドレスだけで使用できます。
 
-            電話番号とメールアドレスだけで使用できます。<br>
+        個人的に調べる力をつけることができるし、時間の短縮にもなりますが思考力は鍛えられないため注意が必要だと感じました。
 
-            個人的に調べる力をつけることができるし、時間の短縮にもなりますが思考力は鍛えられないため注意が必要だと感じました。<br>
+        また、私も初めは使い物にならないと感じましたが、それは質問の仕方に問題がある場合が多いです。
 
-            また、私も初めは使い物にならないと感じましたが、それは質問の仕方に問題がある場合が多いです。<br>
+        最近は<a href="https://www.naporitansushi.com/chatgpt-tips/">ChatGPTへの質問の仕方！</a>のようなサイトが増えてきています。参考にしてみて下さい。
 
-            最近はChatGPTへの質問の仕方！のようなサイトが増えてきています。参考にしてみて下さい。<br>
+        変化を受け入れて活用する力はエンジニアに限らずこれから必要な能力だと言われているので、一度は試してみましょう！
 
-            変化を受け入れて活用する力はエンジニアに限らずこれから必要な能力だと言われているので、一度は試してみましょう！<br>
+        <dd></dd>
+        <dd></dd>
+        <dd></dd>
 
-            <div class="spacer"></div>
-
-        </div>
-
-
-
+      </div>
     </div>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
 
 </body>
 
 </html>
-
-<style type="text/css">
-    iframe {
-        width: 50vw;
-        height: 60vw;
-        margin: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        border-radius: 5px;
-    }
-
-    iframe::-webkit-scrollbar {
-        display: none;
-    }
-</style>

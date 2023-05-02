@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -9,136 +9,127 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
-    <title>スマホをかざすだけでは... いろいろ遊べるRFID</title>
+
+
+
+    <title>スマホをかざすだけで・・・
+        いろいろ遊べるNFC(RFID)</title>
+
+
+
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="l-head">
-            <a href="../index.html">MEIO STDIO</a>
-        </div>
-        <div class="r-head">ソフトからハードまでITの知識交流サークル</div>
-        <div class="version">ver. β</div>
-    </div>
-
-    <div class="article">
-
-        <div class="article-title">
-            スマホをかざすだけで...<br>いろいろ遊べるRFID
-        </div>
-
-        <div class="dummy"></div>
-
-        <div class="article-text">
-
-            <div class="image">
-                <img src="../image/rfid.jpg">
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
             </div>
 
-            上のNFCタグというものを使って遊んでみたレポートです。<br>
-            厳密にはRFID(のUHF)ですが、図書館で本を勝手に持ち出すとブザーが鳴ったり、ユニクロのセルフレジで服が自動で清算されたりするのはこれと同じ仕組みの通信が行われているためです。<br>
 
-            <h1>RFIDとは</h1>
+            <div class="article">
+                <h1>スマホをかざすだけで・・・
+                    いろいろ遊べるNFC(RFID)</h1>
 
-            RFID(Radio Frequency Identification)は無線周波数を用いたタグの識別を広く指す言葉で、そのうちの一つにNFC(Near Field
-            Communication)、近距離無線通信という技術があります。無線周波数を用いますが、NFCや前述したUHFはタグ自体に電源は不要で、センサー(スマホなど)から放たれる電波をタグのアンテナ部が反射することで通信が行われます。NFCタグの場合、以下のように電波を反射するアンテナ部と、識別情報などを記録するメモリ部が構成されていることがあります。ちなみにこれはシール状になっていて、色々なところに貼り付けることができます。
+                <p>
+                    <img src="../image/rfid.jpg">
 
-            <div class="image">
-                <img src="../image/rfid1.jpg">
-            </div>
+                    NFCタグというものを使って遊んでみたレポートです。<br>
+                    厳密にはRFID(のUHF)ですが、図書館で本を勝手に持ち出すとブザーが鳴ったり、ユニクロのセルフレジで服が自動で清算されたりするのはこれと同じ仕組みの通信が行われているためです。
+                </p>
 
-            <h1>学生証を読み取ってみる(自己責任)</h1>
+                <h2>NFC(RFID)とは</h2>
 
-            ユニクロの服に使われているタグはUHFというタイプのもので、実際に読み取るセンサーは簡単に手に入るものではありませんが、NFCの場合、スマホで読み取ることができます。私のスマホはAndroidなので、今回はNFC
-            Toolsというアプリを使って学生証に埋め込まれているはずのNFCタグを読み取ってみようと思います。なお実際に試してみる際は自己責任でお願いします。
+                <p>
+                    RFID(Radio Frequency Identification)は無線周波数を用いたタグの識別を広く指す言葉で、そのうちの一つにNFC(Near Field
+                    Communication)、近距離無線通信という技術があります。無線周波数を用いますが、NFCや前述したUHFはタグ自体に電源は不要で、センサー(スマホなど)から放たれる電波をタグのアンテナ部が反射することで通信が行われます。NFCタグの場合、以下のように電波を反射するアンテナ部と、識別情報などを記録するメモリ部が構成されていることがあります。ちなみにこれはシール状になっていて、色々なところに貼り付けることができます。
 
-            <div class="image">
-                <img src="../image/rfid2.jpg">
-            </div>
+                    <img src="../image/rfid1.jpg">
+                </p>
 
-            これが読み取り結果となります。Tagタイプの項目の下に"FeliCa"の文字があります。これはおサイフケータイに必要な通信規格なのですが、NFCとの関係はややこしいので
-            <a href="https://www.sony.co.jp/Products/felica/NFC/relation.html">Sony</a>
-            のページを参照してください。<br>
-            また、一番下にはメモリー情報、4kバイトとあります。あの薄いカードに4キロバイトの情報を保存するメモリが内蔵されているのは面白いですね。学生証のオモテ面にある個人情報は余裕を持って記録できるでしょう。
+                <h2>学生証を読み取ってみる(自己責任)</h2>
 
-            <h1 style="color: #323232">
-                マイナンバーカードも読み取ってみた
-            </h1>
+                <p>
+                    ユニクロの服に使われているタグはUHFというタイプのもので、実際に読み取るセンサーは簡単に手に入るものではありませんが、NFCの場合、スマホで読み取ることができます。私のスマホはAndroidなので、今回はNFC
+                    Toolsというアプリを使って学生証に埋め込まれているはずのNFCタグを読み取ってみようと思います。なお実際に試してみる際は自己責任でお願いします。
 
-            <div class="image">
+                    <img src="../image/rfid2.jpg">
+
+                    これが読み取り結果となります。Tagタイプの項目の下に"FeliCa"の文字があります。これはおサイフケータイに必要な通信規格なのですが、NFCとの関係はややこしいので<a
+                        href="https://www.sony.co.jp/Products/felica/NFC/relation.html">Sonyのページ</a>を参照してください。
+                    また、一番下にはメモリー情報、4kバイトとあります。あの薄いカードに4キロバイトの情報を保存するメモリが内蔵されているのは面白いですね。学生証のオモテ面にある個人情報は余裕を持って記録できるでしょう。
+                </p>
+
+                <h2>
+                    <font color="white">マイナンバーカードも読み取ってみた</font>
+                </h2>
+
                 <img src="../image/rfid3.jpg">
-            </div>
 
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <h1>ちゃんと遊んでみる</h1>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
 
-            本題に入ります。NFCタグを少しだけ入手することができたので、それでなにかプログラムめいたものを作ってみます。<br>
-            なお環境は<br>
-            端末：HUAWEI nove5t<br>
-            OS：EMUI<br>
-            使用アプリ：MacroDroid<br>
-            となります。<br>
-            MacroDroidの機能はiOSでいうところのショートカット(Workflow)にあたります。MacrodroidでもNFCタグを読み取り、特定のタグが読み取られた際になんらかのアクションを起こすよう設定することができます。<br>
-            かなり雑ですが、教科書にスマホをかざすと講義の情報を表示してくれるショートカットだと以下のようになります。
+                <h2>ちゃんと遊んでみる</h2>
 
-            <div class="spacer"></div>
-            ①教科書にタグを貼る
-            <div class="image">
+                <p>
+                    本題に入ります。NFCタグを少しだけ入手することができたので、それでなにかプログラムめいたものを作ってみます。<br>
+                    なお環境は<br>
+                    端末：HUAWEI nove5t<br>
+                    OS：EMUI<br>
+                    使用アプリ：MacroDroid<br>
+                    となります。<br>
+                    MacroDroidの機能はiOSでいうところのショートカット(Workflow)にあたります。MacrodroidでもNFCタグを読み取り、特定のタグが読み取られた際になんらかのアクションを起こすよう設定することができます。
+                    かなり雑ですが、教科書にスマホをかざすと講義の情報を表示してくれるショートカットだと以下のようになります。
+
+                <h4>①教科書にタグを貼る</h4>
                 <img src="../image/rfid4.jpg">
-            </div>
 
-            <div class="spacer"></div>
-            ②トリガー・アクションを設定
-            <div class="image">
+                <h4>②トリガーになるタグを設定</h4>
                 <img src="../image/rfid5.jpg">
-            </div>
 
-            <div class="spacer"></div>
-            ③教科書をスマホにかざす
-            <div class="image">
+                <h4>③教科書にスマホをかざす</h4>
                 <img src="../image/rfid6.jpg">
-            </div>
-            <div class="spacer"></div>
 
-            これくらいの機能ならかなり簡単に作れます。タグが有り余っていたら実際に使ってみたいですね。<br>
-            勤怠管理にも使えるかもしれません。
+                これくらいの機能ならかなり簡単に作れます。タグが有り余っていたら実際に使ってみたいですね。<br>
+                勤怠管理にも使えるかもしれません。
 
-            <div class="spacer"></div>
-            ①記録用ファイルを作成
-            <div class="image">
+                <h4>①記録用ファイルを作成</h4>
                 <img src="../image/rfid7.jpg">
-            </div>
 
-            <div class="spacer"></div>
-            ②トリガー・アクションを設定
-            <div class="image">
+                <h4>②アクションの設定</h4>
                 <img src="../image/rfid8.jpg">
-            </div>
 
-            <div class="spacer"></div>
-            ③スマホをかざす
-            <div class="image">
+                <h4>③スマホをかざす</h4>
                 <img src="../image/rfid9.jpg">
+
+                文字化けしていますが、改善次第で使えそうです。
+                </p>
+
+                <h2>まとめ</h2>
+
+                <p>
+                    個人的にNFCタグの勤怠管理システムは実用性が高い気がします。実際にいろいろ試してみるとマクロの設定以上に、どんな目的でNFCタグを使うのか考えることのほうが大変ですね。とはいえプログラミングとは違った趣きがあり楽しかったです。<br>
+                    正直NFCタグは個人で買うとなるとかなり微妙な価格で、高くはないけど試す程度には買うまでもない価格です。使ってみたい方は金城まで。
+                </p>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
             </div>
-            文字化けを起こしていますが改善次第では使えそうです。
-
-            <div class="spacer"></div>
-
-            <h1>まとめ</h1>
-
-            個人的にNFCタグの勤怠管理システムは実用性が高い気がします。実際にいろいろ試してみるとマクロの設定以上に、どんな目的でNFCタグを使うのか考えることのほうが大変ですね。とはいえプログラミングとは違った趣きがあり楽しかったです。<br>
-            正直NFCタグは個人で買うとなるとかなり微妙な価格で、高くはないけど試す程度には買うまでもない価格です。使ってみたい方は金城まで。
-            <div class="spacer"></div>
         </div>
 
-
-
     </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
 
 </body>
 

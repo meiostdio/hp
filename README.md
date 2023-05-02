@@ -1,4 +1,5 @@
 # hp
+<!--
 
 タグについて
 
@@ -12,7 +13,6 @@
 
 以下テンプレート
 
-/*
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -85,4 +85,4 @@ System.out.println("hello");
 
 </html>
 
-*/
+-->

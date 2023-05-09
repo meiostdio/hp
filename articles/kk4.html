@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+
+
+
+    <title>gpt4allで遊んでみる</title>
+
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
+            </div>
+
+
+            <div class="article">
+
+                <h1>gpt4allで遊んでみる</h1>
+                <p>
+                    GPT4allというローカルで動かせるチャットAIがあるのでそれを使ってみた感想です。<br>
+                    ただ感想を書くだけなのでGPT4allが気になる方は<br>
+                    <a href="https://github.com/nomic-ai/gpt4all">GPT4allのgithubページ</a><br>
+                    <a href="https://gigazine.net/news/20230331-gpt4all-how-to-use/">グラボ非搭載の低スペックPCでも使える軽量チャットAI「GPT4ALL」の使い方まとめ</a><br>
+                    を参照してください。<br>
+                    ちなみにOpenAIのGPT4とは、作ってるところも作りも全く違います。
+                </p>
+
+                <h2>こんな感じで動く</h2>
+                <p>
+                    <img src="../image/4all.jpg">
+                    windowsだとgpt4all-lora-quantized-win64.exeを実行すれば起動できます。<br>
+                    pcのスペックにもよりますが、起動してからの準備とプロンプト(命令文)を入力してから返答までのあいだにまあまあ時間がかかります。<br>
+                    この時点でChatGPTとか、最近だとGoogleのBardを使ったほうが早いのですが、ローカルでチャットAIを動かせるという点ではこちらのほうにロマンがあるでしょう・・・。
+                </p>
+
+                <h2>出力の様子</h2>
+                <p>
+                    <img src="../image/4all3.png">
+                    なんとなく察しがついていたかもしれませんが、GPT4allは基本的には英語で質問する必要があります。今だと日本語対応モデルも出ていそうですが。<br>
+                    一応意思疎通ができているように見えますね。
+                </p>
+
+                <h2>プログラムを作らせてみる</h2>
+                <p>
+                    じゃんけんのプログラムをPythonで作ってと頼んでみました。
+                    <img src="../image/4all4.png">
+                    途中までですが、結構謎のコードが誕生。<br>
+                    これは私のプロンプト(英語)が雑だったからでしょうか。
+                </p>
+
+                <h2>おわりに</h2>
+                <p>
+                    ここでは省きますが、githubからgpt4allのファイル構成なども確認できます。data.pyとかgenerate.pyの中身を見てみると面白いかもしれません。<br>
+                    筆者の所感としては、チャットAIの今後はいかに小さなスケールで優れたAIを動かせられるのか、が肝になってくるんじゃないかなと思います。楽しみですね。
+                </p>
+
+
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+
+</body>
+
+</html>

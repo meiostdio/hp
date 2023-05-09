@@ -55,11 +55,10 @@
                     ColaboratoryとMediaPipeの組み合わせは少なくとも筆者は確認していません(できたらいいな)。
                     とりあえずAnacondaをインストールし、以下のコードをAnaconda Powershell Prompt に入力します。
 
-                <pre class="prettyprint">
+<pre class="prettyprint">
 conda create -n mediapipe
 conda activate mediapipe
-pip install mediapipe                    
-</pre>
+pip install mediapipe</pre>
 
                 インストールができれば、どこかにJupyter Notebookがあり、そこから実際にプログラムを書くためのファイルを作ります。<br>
                 ファイル名は適当で問題ありません。
@@ -76,13 +75,12 @@ pip install mediapipe
 
                 <p>
 
-                <pre class="prettyprint">
+<pre class="prettyprint">
 import pyautogui
 import cv2
 import mediapipe as mp
 import math
-import numpy as np
-</pre>
+import numpy as np</pre>
 
                 ライブラリをインポートするとあらかじめ用意された便利なプログラムを呼び出すことができます。
 
@@ -93,13 +91,12 @@ import numpy as np
                 <p>
 
 
-                <pre class="prettyprint">
+<pre class="prettyprint">
 import pyautogui
 import cv2
 import mediapipe as mp
 import math
-import numpy as np
-</pre>
+import numpy as np</pre>
 
                 degreeが関数名になります。()内に6つの変数を入れると、それらがx0からy2に対応して角度(0-180°)が計算されます。ここで入力される変数は手のランドマーク、つまり手の関節に与えられた点の座標になります。参照元(https://www.higashisalary.com/entry/numpy-angle-calc)
 
@@ -111,21 +108,18 @@ import numpy as np
 
                     MediaPipeの公式サイトからコードを引っ張ってきます。(https://google.github.io/mediapipe/solutions/hands.html)
 
-                <pre class="prettyprint">
+<pre class="prettyprint">
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
     
 mp_hands = mp.solutions.hands
     
-    
     cap = cv2.VideoCapture(0)
     
     with mp_hands.Hands(
-    
-        model_complexity=0,
-    
+ 
+        model_complexity=0,   
         min_detection_confidence=0.5,
-    
         min_tracking_confidence=0.5) as hands:
     
       while cap.isOpened():
@@ -139,25 +133,17 @@ mp_hands = mp.solutions.hands
           # If loading a video, use 'break' instead of 'continue'.
     
           continue
-    
-    
-    
-        # To improve performance, optionally mark the image as not writeable to
-    
+   
+        # To improve performance, optionally mark the image as not writeable to 
         # pass by reference.
     
         image.flags.writeable = False
-    
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    
         results = hands.process(image)
-    
-    
     
         # Draw the hand annotations on the image.
     
         image.flags.writeable = True
-    
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     
         if results.multi_hand_landmarks:
@@ -167,13 +153,9 @@ mp_hands = mp.solutions.hands
             mp_drawing.draw_landmarks(
     
                 image,
-    
                 hand_landmarks,
-    
                 mp_hands.HAND_CONNECTIONS,
-    
                 mp_drawing_styles.get_default_hand_landmarks_style(),
-    
                 mp_drawing_styles.get_default_hand_connections_style())
     
         # Flip the image horizontally for a selfie-view display.
@@ -207,68 +189,66 @@ mp_hands = mp.solutions.hands
                     ちなみにこの座標ではx,yは0-1で表現されます。
 
 
-                <pre class="prettyprint">
-                    indX=hand_landmarks.landmark[8].x
-                    indY=hand_landmarks.landmark[8].y
+<pre class="prettyprint">
+indX=hand_landmarks.landmark[8].x
+indY=hand_landmarks.landmark[8].y
             
-                    wriX=hand_landmarks.landmark[0].x
-                    wriY=hand_landmarks.landmark[0].y
+wriX=hand_landmarks.landmark[0].x
+wriY=hand_landmarks.landmark[0].y
             
-                    thuX=hand_landmarks.landmark[4].x
-                    thuY=hand_landmarks.landmark[4].y
-                </pre>
+thuX=hand_landmarks.landmark[4].x
+thuY=hand_landmarks.landmark[4].y</pre>
 
                 繰り返し処理(for)のなかで3点の座標、ind(人差し指)、wri(手首)、thu(親指)を取得します。
 
-                <pre class="prettyprint">
-                    finger = 0
-                    tmp1x, tmp1y, tmp2x, tmp2y = 0, 0, 0, 0
-                </pre>
+<pre class="prettyprint">
+finger = 0
+tmp1x, tmp1y, tmp2x, tmp2y = 0, 0, 0, 0
+</pre>
 
                 繰り返し処理の外でフラグを宣言・初期化します。
 
-                <pre class="prettyprint">
-        degree1 = degree(wriX, wriY, thuX, thuY, indX, indY)
+<pre class="prettyprint">
+degree1 = degree(wriX, wriY, thuX, thuY, indX, indY)
 
-        if finger == 0 or finger == 3 and degree1 > 25:
-            print('ready')
-            finger = 1
+if finger == 0 or finger == 3 and degree1 > 25:
+   print('ready')
+   finger = 1
 
-        if finger == 1 and degree1 < 5:
-            print('catch')
-            tmp1x = (indX + thuX)/2
-            tmp1y = (indY + thuY)/2
-            finger = 2
+if finger == 1 and degree1 < 5:
+   print('catch')
+   tmp1x = (indX + thuX)/2
+   tmp1y = (indY + thuY)/2
+   finger = 2
 
-        if finger == 2 and degree1 > 10:
-            print('release')
-            tmp2x = (indX + thuX)/2
-            tmp2y = (indY + thuY)/2
-            degree2 = degree(tmp1x, tmp1y, 0, tmp1y, tmp2x, tmp2y)
+ if finger == 2 and degree1 > 10:
+    print('release')
+    tmp2x = (indX + thuX)/2
+    tmp2y = (indY + thuY)/2
+    degree2 = degree(tmp1x, tmp1y, 0, tmp1y, tmp2x, tmp2y)
 
-            if degree2 < 60:
-                pyautogui.hotkey('ctrl', 'y')
-                print('右')
+    if degree2 < 60:
+       pyautogui.hotkey('ctrl', 'y')
+       print('右')
 
-            if degree2 > 60 and degree2 < 120:
+    if degree2 > 60 and degree2 < 120:
 
-                if tmp1y > tmp2y:
+       if tmp1y > tmp2y:
 
-                    pyautogui.hotkey('ctrl', 'c')
-                    print('上')
+          pyautogui.hotkey('ctrl', 'c')
+          print('上')
 
-                if tmp2y > tmp1y:
+        if tmp2y > tmp1y:
 
-                    pyautogui.hotkey('ctrl', 'v')
-                    print('下')
+           pyautogui.hotkey('ctrl', 'v')
+           print('下')
 
-            if degree2 > 120:
+        if degree2 > 120:
 
-                pyautogui.hotkey('ctrl', 'z')
-                print('左')
+           pyautogui.hotkey('ctrl', 'z')
+           print('左')
 
-            finger = 3
-                </pre>
+           finger = 3</pre>
 
                 これはfor文内部で座標を取得したあとに書かれます。先に宣言したfingerは指の動作の行程を順序よく認識させるために用いられます。また、tmpみたいな変数はキャッチとリリース時に取得した座標を一時的に保管するためのものです。<br>
                 最初に定義した関数の計算の都合上、算出される角度は0から180までになっています。そのため、右方向は1-60°、上下方向は61-120°、左方向は121-180°という割り当てになり、角度だけでは上下は判別できません。苦し紛れの方策として、上下方向は角度に加えて、キャッチ時よりy座標が大きくなっているかどうかで上下の判別をします。<br>

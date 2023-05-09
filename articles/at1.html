@@ -144,8 +144,7 @@
 
                 <p>
                     ここからは実際にコードを見ながら配色の導き方を説明していきます。
-                <pre class="prettyprint">
-                <code>
+<pre class="prettyprint">
 public void triad() {
     int R, G, B;
     int x;
@@ -163,8 +162,7 @@ public void triad() {
     B = x;
     triadColor2.setBackground(new Color(R, G, B));
     }            
-                </code>
-                </pre>
+</pre>
 
                 これはトライアド配色の導き方です。<br>
 
@@ -194,8 +192,7 @@ public void triad() {
 
                 ↓上からアナロガス配色、スプリッド・コメンタリー配色のメソッド
 
-                <pre class="prettyprint">
-                <code>
+<pre class="prettyprint">
 public void analogous() {
     int change = 60; // 変化量
     int red = choiceColor.getBackground().getRed();
@@ -211,10 +208,9 @@ public void analogous() {
 
     analogousColor2.setBackground(new Color(Color.HSBtoRGB((float) (changedHue2) / 360, targetHSB[1], targetHSB[2])));
     }
-                </code>
-                </pre>
-                <pre class="prettyprint">
-                <code>
+</pre>
+            
+<pre class="prettyprint">
 public void splitCommentary() {
     int change = 30; // 変化量
     int red = choiceColor.getBackground().getRed();
@@ -232,17 +228,14 @@ public void splitCommentary() {
         .setBackground(new Color(Color.HSBtoRGB((float) (changedHue2) / 360, targetHSB[1], targetHSB[2])));
                 
     }
-                </code>
-                </pre>
+</pre>
 
                 この2つのメソッドで違う部分はこの部分です。<br>
 
-                <pre class="prettyprint">
-int changedHue1 = hueInt + change + 180;
-</pre>
-                <pre class="prettyprint">
-int changedHue2 = hueInt - change + 180;
-</pre>
+<pre class="prettyprint">
+int changedHue1 = hueInt + change + 180;</pre>
+            
+<pre class="prettyprint">int changedHue2 = hueInt - change + 180;</pre>
 
                 +180することで補色になるため、スプリッド・コメンタリー配色では+180しています。
 

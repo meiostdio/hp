@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+
+
+
+    <title>記事タイトル</title>
+
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
+            </div>
+
+
+            <div class="article">
+                <h1>Java21で新しく提案された機能が面白い！</h1>
+                <p>
+                    タイトル部分だけ読みたい人は「提案の内容」まで飛ばしてください。
+                </p>
+                <h2>JDKはいろいろある</h2>
+                <p>
+                    Javaを開発するうえでJDK(Java Development Kit)をインストールしなければなりません。<br>
+                    JDKはソースコードのコンパイラ、Java仮想マシンなどが含まれます。<br>
+                    JDKは色んな団体が公開していて、お金を払わなければインストールできないものから無料で使えるものがあります。<br>
+                    私が使っているものはOracleJDKというOracle社が公開している無償のJDKです。(サーバーとして不特定多数が使用する場合は有償ライセンスが必要らしい)<br>
+                    わざわざインストールしなおすのが面倒なのでやっていませんが、私がオススメするのはOpenJDKです。OpenJDKはオープンソースでありすべての機能において無料で使用することができるからです。<br>
+                </p>
+                <h2>そもそも提案(JEP)とは？</h2>
+                <p>
+                    そんなOpenJDKは現在のバージョンが20<br>
+                    現在バージョン21を開発中ですが、OpenJDKプロジェクトに参加している開発者は誰でも新機能について提案できます。(JEP-Java Enhancment Proposalといいます)<br>
+                    この提案は他のメンバーによって精査されて採択するか決められるのですが、その中に面白いと感じた提案がありました！<br>
+                    私もGoogle翻訳で読んでいて大まかに意味が分かるのでぜひ読んでみてください。<br>
+                    <a href="https://openjdk.org/jeps/445" target="_blank">OpenJDK JEP 445: JDK 19</a>
+                </p>
+                <h2>提案の内容</h2>
+                <p>
+                    ここからは提案の内容に触れていきます。
+                    まず以下のコードはJavaのHelloWorldです。</p>
+<pre class="prettyprint">
+public class HelloWorld { 
+    public static void main(String[] args) { 
+    System.out.println("Hello, World!");
+    }
+}
+</pre>
+                <p>
+                    提案者はこのコードに対してめっちゃ文句を言っています。<br>
+                    提案の文をGoogle翻訳した文↓<br>
+                    <blockquote class="quote-003">
+                            ここには、プログラムの動作に対して、コードが多すぎ、概念が多すぎ、構成要素が多すぎて、混乱が多すぎます。
+                            <cite>Google翻訳</cite>
+                    </blockquote>
+                    確かに初めて勉強をしたときに理解できない部分がとても多いですね。
+                </p>
+                <p>
+                    メイン関数の前の<a style="color:crimson">public static void</a>や<a style="color:crimson">class HelloWorld</a>などは理解の妨げになっています。<br>
+                    Pythonはprintだけで出力できメソッド名が誰でもわかりやすいです。
+                </p>
+                    <blockquote class="quote-003">
+                        教育者はよく「そんなことは心配しないでください、後でわかるでしょう」と忠告します。
+                        これは彼らにとっても生徒にとっても同様に満足できるものではなく、Java は複雑であるという永続的な印象を生徒に残します。
+                        <cite>Google翻訳</cite>
+                    </blockquote>
+                <p>
+                    確かに私もC言語を勉強した際、先生から<a style="color:crimson">#include&lt;stdio.h&gt;</a>は無視していいと言われても納得できませんでした！
+                        この提案がすべて採択された場合、上記のコードはこうなります。
+                </p>
+                <pre class="prettyprint">
+void main(){
+    System.out.println(”Hello world!”);
+    }</pre>     
+                <p>
+                    シンプルすぎて逆に不安になります。Javaっぽくない。<br>
+                    さらにSystem.outも省略するのを目標にしているそうです。<br>
+                    しかし新しくJavaを勉強する学生からするとよい機能かもしれません。<br>
+                    この記事は
+                    <a href="https://techfeed.io/events/techfeed-experts-night-18">
+                        TechFeedというエンジニアコミュニティ
+                    </a>
+                    のアーカイブから取り上げました。<br>
+                    <a href="https://speakerdeck.com/kishida/java20-21-object-oriented-to-data-oriented?slide=11" target="_blank">
+                        Java 20, 21, オブジェクト指向からデータ指向へ
+                    </a><br>
+                    このようなコミュニティは英語しかない1次ソースを翻訳してくれるのでとってもありがたい!<br>
+                    私も理解できることの方が少ないですがわかる範囲で見ていく習慣があればプラスになるのでオススメです。<br>
+                </p>
+                <h3>余談</h3>
+                <p>
+                    OpenJDKはオープンソースで柔軟性と新しい機能を重視する。<br>
+                    OracleJDKは企業向けであり、安定性を重視する傾向がある。<br>
+                    らしい、ソースはないです。
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+
+</body>
+
+</html>

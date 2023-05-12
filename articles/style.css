@@ -231,3 +231,35 @@ dd {
     }
 
 }
+
+
+.quote-003 {
+    max-width: 500px;
+    position: relative;
+    padding: 3em 2.5em 2em 3.5em;
+    color: #1b1b1b;
+    background-color: #f2f6fc;
+}
+
+.quote-003::before {
+    display: inline-block;
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%232589d0%22%20d%3D%22M21.8%2012H18V9c0-1.7%201.3-3%203-3h.4c.6%200%201.1-.5%201.1-1.1V2.6c0-.6-.5-1.1-1.1-1.1H21c-4.1%200-7.5%203.4-7.5%207.5v11.2c0%201.2%201%202.2%202.2%202.2h6c1.2%200%202.2-1%202.2-2.2v-6C24%2013%2023%2012%2021.8%2012zM8.2%2012H4.5V9c0-1.7%201.3-3%203-3h.4C8.5%206%209%205.5%209%204.9V2.6c0-.6-.5-1.1-1.1-1.1h-.4C3.4%201.5%200%204.9%200%209v11.2c0%201.2%201%202.2%202.2%202.2h6c1.2%200%202.2-1%202.2-2.2v-6c.1-1.2-.9-2.2-2.2-2.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.quote-003 p {
+    margin-top: 0;
+}
+
+.quote-003 cite {
+    display: block;
+    color: #6a6a6a;
+    font-size: .8em;
+    text-align: right;
+}

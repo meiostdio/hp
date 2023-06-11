@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+    <title>2005年にWeb業界で起きた流行</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
+            </div>
+            <div class="article">
+                <h1>2005年にWeb業界で起きた流行</h1>
+                <p>
+                    大体2005年以前のWebページは操作性が非常に悪かった。<br>
+                    当時のWebサイトの挙動を紹介しているサイトがあります。<br>
+                </p>
+                <a href="https://jxck.hatenablog.com/entry/ajax-10th-anniversary" target="_blank">Ajax誕生から10年とこれから</a>
+                <blockquote class="quote-003">
+                    地図の周り 8 方向の矢印や拡大率は全部リンクで、
+                    クリックするとその場所や拡大率を表示したページを遷移する。
+                    なんと懐かしい UI だろう、今だとイライラして最悪な UX ですが、
+                    昔の地図とはこうだったと思います。
+                    <cite>Ajax誕生から10年とこれから</cite>
+                </blockquote>
+                <p>
+                    私が小中学生のころ、確かにこんな感じだった気がします。
+                    今ではドラッグ＆ドロップで地図の表示部分を移動できますが、
+                    当時は上下左右の矢印ボタンをクリックして画面が遷移するような挙動でした。
+                </p>
+                <h2>2005年に何が起きたのか</h2>
+                <p>
+                    Ajaxと呼ばれる機能が誕生します。<br>
+                    従来のWebページでは再読み込みするたびに
+                    サーバーはページ全体のデータを送信して、
+                    それを受信したブラウザが再表示していました。<br>
+                    それを送受信したいデータのみでやり取りができ、データ量の短縮ができます。
+                    例えば以下のような講義を登録させる入力フォームがあったとします。
+                    <img src="../image/AjaxForm.png">
+                    Ajaxを使用すると講義名のみの文字データのみをサーバーに送信・受信してデータの登録や閲覧ができます。<br>
+                    登録後、講義名の一覧を表示したい際にページ全体を再受信していたのが、講義名の文字データだけで済みます。<br>
+                    現代のように早い通信環境が整っている時代ですらページに載せる画像サイズを低く抑えて表示速度を上げようとしています。
+                    つまり、データ量を抑えることはWebサイトを開発するうえで非常に重要な考えです。<br>
+                    余談ですが、Googleは画像のサイズを1.6MB以下にすることを推奨しています。<br>
+                    <a href="https://flex-box.net/image-optimization/">【Google推奨】Webサイトのファイルサイズは1.6MB以下、画像を適切に圧縮しよう！</a>
+                    このように欲しいデータのみをやり取りする通信は非同期通信と呼ばれ現在、ユーザーからの処理を受け付けるWebサイトでは実装されている可能性が非常に高いです。<br>
+                    (厳密には非同期通信とAjaxは同じものではありません。非同期通信を実装するための1つの手法がAjaxです。)<br>
+                </p>
+                <h2>当時の反応</h2>
+                <p>
+                    最近(2023年6月現在)の流行りといえばNFT、VR、ブロックチェーン、生成AI、などでしょうか。<br>
+                    この中には個人的にただのお金持ちたちの遊びだーと感じるものもありますが、そのような流行の一つだと捉えられていたようです。<br>
+                    以下の記事ではAjaxが非同期通信そのものであるように提唱されていることを危惧しています。
+                    また、前半ではそんな流行りものには飛びつかずに慎重になっている様子が読み取れます。<br>
+                    この記事はAjaxという言葉が誕生した4か月後に投稿された記事で、開発者が最前線でどのように受け止めていたのかが分かりますね。<br>
+                    <a href="https://satoshi.blogs.com/life/2005/06/ajax.html">Ajaxの本質、「非同期メッセージ型ウェブ・アプリケーション」のススメ</a><br>
+                    その2年後にはFujitsuの団体記事で紹介されています。<br>
+                    <a href="https://jp.fujitsu.com/family/familyroom/e-family/2007-27/ud/">AjaxWebのなめらか操作を実現する古くて新しい技術</a><br>
+                    現在では一般的になっている技術が生まれた当時はどのような扱いを受けたのか、昔の記事をあさっていると知ることができます。<br>
+                    インターネットの奥底に眠っている記事は歴史の教科書を見ているような感覚を受けますね！<br>
+                </p>
+                <h2>昔の記事を読む楽しさ</h2>
+                2005年以降はAjaxが重要な役割を果たし、Web2.0という概念が急速に広まっていきます。<br>
+                Web2.0とは超大雑把に表現するとユーザーが単純にWebサイトを閲覧するだけでなく、
+                プラットフォームやデバイスの垣根を超えたソフトウェアのように使用されることです。<br>
+                最近Web3.0という言葉が色々なところで使われるようになってきましたが、これらを支える技術であるブロックチェーンはどんな技術なのでしょうか。<br>
+                歴史を知ることは未来を知ることと同じですね。<br>
+                <h2>余談</h2>
+                <p>
+                    記事中で紹介しているサイトの中にSatoshi Nakajimaさんという人が書いた記事があります。<br>
+                    こと人はITの黎明期をマイクロソフトで過ごしたすごい人で、ブログが面白いのでオススメです！<br>
+                </p>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+
+</body>
+
+</html>

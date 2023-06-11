@@ -26,7 +26,7 @@
 }
 
 .wh {
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.90);
 }
 
 .head {
@@ -80,8 +80,8 @@ h1 {
 h2 {
     width: 100%;
     height: fit-content;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 h3 {

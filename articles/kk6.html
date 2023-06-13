@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+
+
+
+    <title>アセンブリ言語を書きたい【前篇】</title>
+
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wh">
+            <div class="head">
+                <a href="../index.html">
+                    <div class="rabel">MEIO STDIO</div>
+                </a>
+                <div class="dummy"></div>
+            </div>
+
+
+            <div class="article">
+                <h1>アセンブリ言語を書きたい【前篇】</h1>
+
+                <p>
+                    マシン語に近いなにか
+                </p>
+
+                <h3>アセンブリ言語とは</h3>
+
+                <p>
+                    みなさんはアセンブリ言語をご存知でしょうか。<br>
+                    アセンブリ言語は、コンピュータのアーキテクチャ(コンピュータを構成する物理的な素材)に直結するマシン語(0と1や16進数)とわたしたちが普段使用するプログラミング言語の間あたりに位置するものです。一般的なプログラミング言語が高水準プログラミング言語であるのに対して、アセンブリ言語は低水準プログラミング言語と呼ばれます。
+
+                </p>
+
+                <h3>なぜアセンブリ言語なのか</h3>
+
+                <p>
+                    かっこいいから。<br>
+                    アセンブリ言語は難解な分、処理に無駄がなく高速で実行することができます。
+
+                </p>
+
+                <h3>アセンブリ言語はアーキテクチャに依存する</h3>
+
+                <p>
+                    アセンブリ言語の書き方はそのコンピュータのCPUに依存します。そのため今回はx86というみんなが使っているプロセッサを前提にアセンブリ言語を書いていきます。intelやAMD(Ryzen)のプロセッサはx86で、スマホによく使われるSnap
+                    DragonやAppleが開発するApple SiliconはARMというCPUに分類されます。パソコンとスマホの違いはOSといえばそうですが、より細かくいうとCPUアーキテクチャの違いといえます。
+                </p>
+
+                <h3>アセンブリ言語を読んでみる</h3>
+
+                <p>
+                    「<a href="https://schweigi.github.io/assembler-simulator/">Simple 8-bit Assembler
+                        Simulator</a>」という、x86風にアセンブリ言語を書くことができるシミュレーターがあり、そこには既定で"Hello
+                    World"を出力するコードが書かれています。今回はとりあえずそれを読みたいと思います。
+                </p>
+
+                <img src="../image/assembly1.jpg">
+
+                <P>
+                    “hello: DB～”が一連の処理のメソッド名(?)的なものになり、DB(Data
+                    Byte)に入力する文字列が入ります。”start”はメインメソッド、”print”はプリントするための関数、”loop”はループ。最後にあるRETで処理がメインメソッドに戻ります。MOVは、この場合４つのレジスタ(右表にあるA,
+                    B, C, D)にデータを代入する命令で、PUSHとかPOPではスタックを操作している感じがうかがえます。<br>
+                    正直よくわかりませんが、こんな面倒な処理を一行で済ませてくれる高級プログラミング言語は偉大ですね。ちなみに横の表はレジスタとRAMに格納されるデータの遷移が示されます。おもしろい。
+
+                </P>
+
+                <h3>おわりに</h3>
+
+                <p>
+                    今回の記事は前篇なのでここまでですが、後編ではもう少し理解を深めてちょっとしたコードを書いてみたいと思います。
+                </p>
+
+
+
+
+
+
+
+
+
+
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+
+</body>
+
+</html>
